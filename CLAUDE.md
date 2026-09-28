@@ -79,4 +79,8 @@ Raw PNGs are not committed; re-download from the job IDs if needed.
   images inlined that opens anywhere. `--artifact` writes `.preview/live.html` for the live link (see the standing rule).
 - Nothing meant to be read may rest at opacity 0 waiting for a scroll or load animation: entrances move, they never fade
   in from invisible, so thumbnails and full-page captures show the whole page.
-- Deploy: static host of `site/`. Patch the `DEPLOY STEP` comment (og:url, og:image) once the domain exists.
+- Deploy: GitHub Pages via `.github/workflows/pages.yml`, which publishes `site/` on every push to `main` (or by hand
+  from the Actions tab). Settings > Pages > Source must be "GitHub Actions": "Deploy from a branch" only serves the repo
+  root or /docs. Make `main` the default branch before switching the source, so the github-pages environment allows
+  deploys from `main`. Site URL once live: https://hens18.github.io/bakery/. Patch the `DEPLOY STEP` comment
+  (og:url, og:image) once the final domain exists.
