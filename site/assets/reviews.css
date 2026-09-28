@@ -16,8 +16,8 @@
 .belt__track::-webkit-scrollbar{display:none}
 
 .plate{flex:0 0 min(400px,86vw);scroll-snap-align:start;display:flex;
-  opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease-out),transform .8s var(--ease-out);transition-delay:calc(var(--i) * 90ms)}
-.reviews.in .plate{opacity:1;transform:none}
+  transform:translateY(16px);transition:transform .8s var(--ease-out);transition-delay:calc(var(--i) * 90ms)}
+.reviews.in .plate{transform:none}
 .reviews.in .plate.is-settled{transition-delay:0s}
 
 .plate__card{flex:1;display:flex;flex-direction:column;background:var(--canvas);border:1px solid var(--line);border-radius:20px;padding:28px}
@@ -42,6 +42,6 @@
 .reviews__foot{margin-top:28px}
 
 @media (prefers-reduced-motion:reduce){
-  .plate{opacity:1;transform:none}
+  .plate{transform:none}
   [data-belt-pause]{display:none}
 }

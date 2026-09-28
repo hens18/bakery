@@ -1,7 +1,8 @@
 // Bundles site/ into one self-contained page for sharing a preview.
 // Local CSS/JS are inlined and images become data URIs, so the single file opens anywhere
 // (double-click, email, chat). Fonts still load from Google Fonts. Output: .preview/index.html (git-ignored).
-// Pass --artifact to also strip <html>/<head>/<body> for hosts that wrap pages in their own document.
+// --artifact writes .preview/live.html for the live preview link instead: the artifact host wraps pages in
+// its own <html>/<head>/<body>, so those are stripped, and the tab title is the plain business name.
 const fs = require("fs");
 const path = require("path");
 
@@ -30,11 +31,13 @@ html = inlineImages(html);
 if (artifact) {
   html = html
     .replace(/<!doctype html>\s*/i, "")
-    .replace(/<\/?(html|head|body)[^>]*>\s*/gi, "")
-    .replace(/<meta (charset|name="viewport")[^>]*>\s*/gi, "");
+    .replace(/<\/?(html|head|body)\b[^>]*>\s*/gi, "")
+    .replace(/<meta (charset|name="viewport")[^>]*>\s*/gi, "")
+    .replace(/<title>[^<]*<\/title>/, "<title>Mena Bakery &amp; Carry Out</title>");
 }
 
+const name = artifact ? "live.html" : "index.html";
 fs.mkdirSync(path.join(root, ".preview"), { recursive: true });
-const out = path.join(root, ".preview", "index.html");
+const out = path.join(root, ".preview", name);
 fs.writeFileSync(out, html);
-console.log(`Wrote .preview/index.html (${Math.round(fs.statSync(out).size / 1024)} KB)`);
+console.log(`Wrote .preview/${name} (${Math.round(fs.statSync(out).size / 1024)} KB)`);

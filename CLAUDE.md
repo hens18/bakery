@@ -6,6 +6,17 @@ Brief: minimalist site built off the Honeybear Bake Shop template (Squarespace),
 from Higgsfield, the full menu, hours and location, and a reviews section built the same way as the Kanji site
 (`hens18/kanji`, `site/assets/reviews.js` + `reviews.css`).
 
+## Standing rule: live link after every change
+
+After EVERY commit (and push), publish the current site as the live preview and give the user the link:
+
+1. `node scripts/build-preview.js --artifact` (bundles `site/` into `.preview/live.html`)
+2. Publish `.preview/live.html` with the Artifact tool. Reuse the same URL every time: pass `url` = the live link
+   below so it updates in place instead of creating a new one.
+3. End the reply with the live link.
+
+Live preview link: https://claude.ai/artifact/JgfdcbFB7WqbwA3aagxnfr (private until shared from its Share menu)
+
 ## Business facts (sources)
 
 - Phone (703) 913-7133. In the West Springfield Shopping Center, between Bauer Dr and Traford Ln (Yahoo Local).
@@ -65,5 +76,7 @@ Raw PNGs are not committed; re-download from the job IDs if needed.
 - `site/index.html` + `site/assets/`: plain HTML/CSS/vanilla JS, no build step. `site.css` holds the tokens and sections,
   `reviews.css`/`reviews.js` the review belt (same component as Kanji), `main.js` nav, tabs and hours.
 - Preview: `node scripts/build-preview.js` writes `.preview/index.html`, one self-contained file with CSS, JS and
-  images inlined. Rebuild it after every change you want someone to look at.
+  images inlined that opens anywhere. `--artifact` writes `.preview/live.html` for the live link (see the standing rule).
+- Nothing meant to be read may rest at opacity 0 waiting for a scroll or load animation: entrances move, they never fade
+  in from invisible, so thumbnails and full-page captures show the whole page.
 - Deploy: static host of `site/`. Patch the `DEPLOY STEP` comment (og:url, og:image) once the domain exists.
