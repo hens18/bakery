@@ -170,14 +170,43 @@
     </section>
 
     <section class="menu" id="menu" aria-labelledby="menu-title">
-      <div class="wrap menu__grid">
-        <div class="menu__aside">
+      <div class="wrap menu__head">
+        <div>
           <h2 class="h2" id="menu-title">The menu</h2>
           <p class="muted menu__note">Breakfast, meat and vegetarian plates for carry‑out. Call ahead to order, or get delivery online.</p>
-          <div class="menu__ctas">
-            <a class="btn btn--solid" href="tel:+17039137133">Call (703) 913-7133</a>
-            <a class="btn btn--line" href="https://www.grubhub.com/restaurant/mena-bakery--carry-out-6222-rolling-rd-springfield/2443743" target="_blank" rel="noopener">Order delivery <span aria-hidden="true">›</span></a>
-          </div>
+        </div>
+        <div class="menu__ctas">
+          <a class="btn btn--solid" href="tel:+17039137133">Call (703) 913-7133</a>
+          <a class="btn btn--line" href="https://www.grubhub.com/restaurant/mena-bakery--carry-out-6222-rolling-rd-springfield/2443743" target="_blank" rel="noopener">Order delivery <span aria-hidden="true">›</span></a>
+        </div>
+      </div>
+
+      <!-- Each card opens its dish in the list below (main.js). -->
+      <ul class="wrap dish-cards" aria-label="Dishes from the kitchen">
+        <li><a class="dish-card" href="#dish-doro-wot">
+          <span class="dish-card__img"><img src="assets/img/dish-doro-wot.webp" width="800" height="600" loading="lazy" alt=""></span>
+          <span class="dish-card__row"><span class="dish-card__name">Doro Wot</span><span class="dish-card__price">$16.99</span></span>
+          <span class="dish-card__meta">Chicken in berbere sauce</span>
+        </a></li>
+        <li><a class="dish-card" href="#dish-tibs">
+          <span class="dish-card__img"><img src="assets/img/dish-tibs.webp" width="800" height="600" loading="lazy" alt=""></span>
+          <span class="dish-card__row"><span class="dish-card__name">Tibs</span><span class="dish-card__price">$14.99</span></span>
+          <span class="dish-card__meta">Cubed beef</span>
+        </a></li>
+        <li><a class="dish-card" href="#dish-gomen-besega">
+          <span class="dish-card__img"><img src="assets/img/dish-gomen-besega.webp" width="800" height="600" loading="lazy" alt=""></span>
+          <span class="dish-card__row"><span class="dish-card__name">Gomen Besega</span><span class="dish-card__price">$13.99</span></span>
+          <span class="dish-card__meta">Collard greens with beef</span>
+        </a></li>
+        <li><a class="dish-card" href="#dish-sambusa">
+          <span class="dish-card__img"><img src="assets/img/dish-sambusa.webp" width="800" height="600" loading="lazy" alt=""></span>
+          <span class="dish-card__row"><span class="dish-card__name">Sambusa</span><span class="dish-card__price">$2.49</span></span>
+          <span class="dish-card__meta">Crisp triangle pastry</span>
+        </a></li>
+      </ul>
+
+      <div class="wrap menu__grid">
+        <div class="menu__aside">
           <img class="menu__img" src="assets/img/platter.webp" width="1000" height="1000" loading="lazy"
                alt="A vegetarian platter on injera with red lentils, split peas, collard greens, cabbage and shiro">
         </div>
@@ -229,7 +258,7 @@
 
           <div class="tabpanel" role="tabpanel" id="panel-lunch" aria-labelledby="tab-lunch" tabindex="0" hidden>
             <ul class="dishes">
-              <li>
+              <li id="dish-tibs">
                 <div class="dish__row"><span class="dish__name">Cubed Beef (Tibs)</span><span class="dish__price">$14.99</span></div>
                 <p class="dish__note">Extra-lean cubes of beef marinated in our chef’s special sauce. Served with a slice of toasted bread or injera. Add awaza or salad for an extra charge.</p>
               </li>
@@ -245,7 +274,7 @@
                 <div class="dish__row"><span class="dish__name">Beef Alecha (Yebere Alecha Wot)</span><span class="dish__price">$13.99</span></div>
                 <p class="dish__note">Beef cubes cooked with onion, turmeric, butter and garlic, flavored with Ethiopian spices.</p>
               </li>
-              <li>
+              <li id="dish-doro-wot">
                 <div class="dish__row"><span class="dish__name">Chicken Doro Wot</span><span class="dish__price">$16.99</span></div>
                 <p class="dish__note">A traditional favorite: fresh organic chicken thigh simmered in berbere sauce, served with homemade cottage cheese.</p>
               </li>
@@ -253,7 +282,7 @@
                 <div class="dish__row"><span class="dish__name">Chicken Doro Alicha</span><span class="dish__price">$16.99</span></div>
                 <p class="dish__note">A traditional favorite: fresh organic chicken thigh simmered in alicha sauce, served with homemade cottage cheese.</p>
               </li>
-              <li>
+              <li id="dish-gomen-besega">
                 <div class="dish__row"><span class="dish__name">Collard Greens with Meat (Gomen Besega)</span><span class="dish__price">$13.99</span></div>
                 <p class="dish__note">Fried beef tibs stewed with collard greens, with misir (red lentils).</p>
               </li>
@@ -290,7 +319,7 @@
                 <div class="dish__row"><span class="dish__name">Mitten Shiro</span><span class="dish__price">$11.95</span></div>
                 <p class="dish__note">Imported spiced chickpea flour, seasoned and cooked with garlic. Add salad for $2.50.</p>
               </li>
-              <li>
+              <li id="dish-sambusa">
                 <div class="dish__row"><span class="dish__name">Sambusa</span><span class="dish__price">$2.49</span></div>
                 <p class="dish__note">Crisp triangle pastry.</p>
               </li>
@@ -320,10 +349,14 @@
 
     <section class="reviews" id="reviews" aria-labelledby="reviews-title">
       <div class="wrap reviews__head">
-        <div>
+        <div class="reviews__intro">
           <h2 class="h2" id="reviews-title">What guests say</h2>
           <p class="muted">From our reviews on Yelp.</p>
         </div>
+        <figure class="reviews__photo">
+          <img src="assets/img/reviews-platter.webp" width="1200" height="679" loading="lazy"
+               alt="A shared platter on injera with beef tibs, doro wot, red lentils, split peas, collard greens, cabbage and salad">
+        </figure>
         <div class="belt__controls">
           <button class="icon-btn" type="button" data-belt-prev aria-label="Previous review">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>

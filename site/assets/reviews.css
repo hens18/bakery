@@ -1,9 +1,17 @@
 /* Reviews carousel, minimal. Same component as the Kanji build; tokens come from site.css. */
 .reviews{padding-block:clamp(64px,9vw,112px);background:var(--panel)}
-.reviews__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:32px}
+/* Heading on the left with the belt controls under it, the platter photo on the right */
+.reviews__head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr auto;
+  grid-template-areas:"intro photo" "controls photo";gap:20px clamp(28px,6vw,96px);margin-bottom:36px}
+.reviews__intro{grid-area:intro}
 .reviews__head .h2{margin-bottom:6px}
 .reviews__head p{margin:0}
-.belt__controls{display:flex;align-items:center;gap:8px}
+.reviews__photo{grid-area:photo;margin:0}
+.reviews__photo img{width:100%;aspect-ratio:2/1;object-fit:cover;border-radius:20px}
+.belt__controls{grid-area:controls;display:flex;align-items:center;gap:8px}
+@media (max-width:860px){
+  .reviews__head{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"intro" "photo" "controls"}
+}
 .icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;padding:0 12px;border-radius:999px;
   border:1px solid var(--line-strong);background:transparent;color:var(--ink);cursor:pointer;font:500 .9rem/1 var(--f-body);
   transition:border-color .3s var(--ease-soft),background-color .3s var(--ease-soft)}

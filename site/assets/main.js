@@ -38,6 +38,24 @@
     });
   });
 
+  /* ---------- Dish cards: open the dish's tab and point at it in the list ---------- */
+  document.querySelectorAll(".dish-card").forEach(card => {
+    card.addEventListener("click", e => {
+      const item = document.getElementById(card.hash.slice(1));
+      const panel = item && item.closest('[role="tabpanel"]');
+      const tab = panel && document.querySelector(`[aria-controls="${panel.id}"]`);
+      if (!tab) return;
+      e.preventDefault();
+      select(tab);
+      item.tabIndex = -1;
+      item.focus({ preventScroll: true });
+      item.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+      item.classList.remove("is-flash");
+      void item.offsetWidth; // restart the highlight when the same card is clicked twice
+      item.classList.add("is-flash");
+    });
+  });
+
   /* ---------- Hours with today + open now (Springfield time) ---------- */
   // From Google and Yelp: Mon-Sat 9 AM - 9 PM, Sun 9 AM - 8 PM.
   const HOURS = [ // index = day of week, 0 = Sunday. [open, close] in 24h

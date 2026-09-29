@@ -71,10 +71,21 @@ Raw PNGs are not committed; re-download from the job IDs if needed.
 - `bakery.webp` (4:5): folded injera and an ambasha loaf on green linen. Job e342e976-4ac4-48ff-8f6f-99dbf7954437
 - `platter.webp` (1:1): vegetarian combination on injera. Job c90aa501-c75d-41d5-9e15-33d886da41b2
 
+Added 2026-09-29, supplied by the user in chat (assumed AI-generated like the rest, so the footer note covers them;
+confirm before launch):
+
+- `dish-doro-wot.webp`, `dish-tibs.webp`, `dish-gomen-besega.webp`, `dish-sambusa.webp` (800x600 crops of 2000px
+  squares): the four dish cards in the menu.
+- `reviews-platter.webp` (1200x679): mixed platter beside "What guests say".
+
 ## Layout
 
 - `site/index.html` + `site/assets/`: plain HTML/CSS/vanilla JS, no build step. `site.css` holds the tokens and sections,
-  `reviews.css`/`reviews.js` the review belt (same component as Kanji), `main.js` nav, tabs and hours.
+  `reviews.css`/`reviews.js` the review belt (same component as Kanji), `main.js` nav, tabs, dish cards and hours.
+- Menu: heading row, then four dish cards (name, price, one-line description), then the tabbed list with the round
+  platter beside it. Each card links to its list item (`#dish-*` ids); main.js opens that tab, scrolls to the item and
+  flashes it. The round platter hides under 860px so phones only get the cards.
+- Reviews: heading and belt controls on the left, the platter photo on the right (stacked on phones).
 - Preview: `node scripts/build-preview.js` writes `.preview/index.html`, one self-contained file with CSS, JS and
   images inlined that opens anywhere. `--artifact` writes `.preview/live.html` for the live link (see the standing rule).
 - Nothing meant to be read may rest at opacity 0 waiting for a scroll or load animation: entrances move, they never fade

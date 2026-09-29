@@ -197,9 +197,24 @@ a{color:inherit}
 /* Menu */
 .menu{padding-block:clamp(64px,9vw,112px)}
 .menu__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,6vw,96px);align-items:start}
+.menu__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px;margin-bottom:36px}
 .menu__aside{position:sticky;top:calc(var(--nav-h) + 28px)}
-.menu__note{max-width:36ch;margin:0 0 22px}
-.menu__ctas{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.menu__note{max-width:40ch;margin:0}
+.menu__ctas{display:flex;flex-wrap:wrap;gap:10px}
+/* Dish cards: four photos between the heading and the list; each opens its dish below */
+.dish-cards{list-style:none;padding:0;margin-block:0 clamp(48px,6vw,72px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.dish-card{display:flex;flex-direction:column;gap:2px;height:100%;text-decoration:none;color:inherit;border-radius:18px}
+.dish-card__img{display:block;overflow:hidden;border-radius:16px;margin-bottom:12px;background:var(--panel)}
+.dish-card__img img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s var(--ease-out)}
+.dish-card:hover .dish-card__img img{transform:scale(1.04)}
+.dish-card__row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.dish-card__name{min-width:0;font:700 1.2rem/1.2 var(--f-display);color:var(--green);letter-spacing:-.005em}
+.dish-card__price{flex:none;font:700 1rem/1.2 var(--f-body);color:var(--green);font-variant-numeric:tabular-nums}
+.dish-card__meta{color:var(--muted);font-size:.92rem}
+.dishes li.is-flash{animation:flash 1.8s var(--ease-soft)}
+@keyframes flash{0%,40%{background:rgba(244,218,156,.7);box-shadow:0 0 0 12px rgba(244,218,156,.7)}}
+@media (max-width:900px){.dish-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}}
+@media (max-width:480px){.dish-card__name{font-size:1.06rem}.dish-card__price{font-size:.95rem}}
 .menu__img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;max-width:420px}
 .menu__fine{font-size:.88rem;margin:18px 0 0}
 .tabs{display:flex;flex-wrap:wrap;gap:4px 26px;border-bottom:1px solid var(--line);margin-bottom:6px}
@@ -210,7 +225,7 @@ a{color:inherit}
 .tabs button[aria-selected="true"]::after{transform:scaleX(1)}
 .tabpanel{animation:fade .45s var(--ease-out)}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}}
-@media (max-width:860px){.menu__grid{grid-template-columns:1fr}.menu__aside{position:static}.menu__img{max-width:280px}}
+@media (max-width:860px){.menu__grid{grid-template-columns:1fr}.menu__aside{display:none}}
 @media (max-width:480px){.tabs{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.tabs button{justify-self:start;text-align:left}}
 
 /* Visit */
